@@ -49,6 +49,8 @@ public class HibernateTestingDao implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+		log.info("Iniciando la Ejecucion");
+		
 		/*
 		 * Permite invocar a un procedimiento que retorna campos aislados de salida, sin cursores
 		 */
@@ -57,14 +59,14 @@ public class HibernateTestingDao implements CommandLineRunner {
 		/*
 		 * Salida cursor
 		 */
-		procedureSalidaCursor();
+		//procedureSalidaCursor();
 		
 		/*
 		 * Salida mixta
 		 */
 		//procedureSalidaMixta();
 		
-	
+		log.info("La ejecucion del proceso ha finalizado");
 
 	}
 	

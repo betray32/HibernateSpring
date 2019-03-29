@@ -10,7 +10,6 @@ import javax.persistence.Entity;
  * @author ccontrerasc
  *
  */
-@Entity
 public class BeanSalidaProcedure implements Serializable {
 
 	/**
