@@ -1,7 +1,6 @@
 package cl.testing;
 
 import java.sql.Date;
-import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -9,10 +8,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 import javax.persistence.StoredProcedureQuery;
+import javax.transaction.Transactional;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.procedure.ProcedureOutputs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Repository;
@@ -53,7 +55,8 @@ public class HibernateTestingDao implements CommandLineRunner {
 
 		log.info("Iniciando la Ejecucion");
 
-		procedureSalidaCursor();
+		//procedureSalidaCursor();
+		procedureSalidaMixta();
 
 		log.info("La ejecucion del proceso ha finalizado");
 
@@ -68,7 +71,6 @@ public class HibernateTestingDao implements CommandLineRunner {
 
 		try {
 
-			
 			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			java.sql.Date fechaQuery = new java.sql.Date(df.parse("2017-07-17").getTime());
 
@@ -85,7 +87,7 @@ public class HibernateTestingDao implements CommandLineRunner {
 					/*
 					 * Salidas
 					 */
-					.registerStoredProcedureParameter(3, Class.class, ParameterMode.REF_CURSOR)
+					.registerStoredProcedureParameter(3, Void.class, ParameterMode.REF_CURSOR)
 
 					/*
 					 * Parametros de entrada
@@ -97,7 +99,8 @@ public class HibernateTestingDao implements CommandLineRunner {
 			query.execute();
 			log.info("Procedure Ejecutado");
 
-			List<Object[]> postComments = query.getResultList();
+			@SuppressWarnings("unchecked")
+			List<Object[]> cursorOut = query.getResultList();
 
 			log.info("Parametros obtenidos correctamente");
 
@@ -127,8 +130,10 @@ public class HibernateTestingDao implements CommandLineRunner {
 					/*
 					 * Salidas
 					 */
-					.registerStoredProcedureParameter(2, String.class, ParameterMode.OUT).registerStoredProcedureParameter(3, String.class, ParameterMode.OUT)
-					.registerStoredProcedureParameter(4, String.class, ParameterMode.OUT).registerStoredProcedureParameter(5, String.class, ParameterMode.OUT)
+					.registerStoredProcedureParameter(2, String.class, ParameterMode.OUT)
+					.registerStoredProcedureParameter(3, String.class, ParameterMode.OUT)
+					.registerStoredProcedureParameter(4, String.class, ParameterMode.OUT)
+					.registerStoredProcedureParameter(5, String.class, ParameterMode.OUT)
 
 					/*
 					 * Parametros de entrada
@@ -170,7 +175,7 @@ public class HibernateTestingDao implements CommandLineRunner {
 					/*
 					 * Procedure a llamar
 					 */
-					.createStoredProcedureQuery(properties.getProcedureSalidaMixta(), BeanSalidaProcedure.class)
+					.createStoredProcedureQuery(properties.getProcedureSalidaMixta())
 					/*
 					 * Entradas
 					 */
@@ -178,7 +183,8 @@ public class HibernateTestingDao implements CommandLineRunner {
 					/*
 					 * Salidas
 					 */
-					.registerStoredProcedureParameter(2, Integer.class, ParameterMode.OUT).registerStoredProcedureParameter(3, String.class, ParameterMode.OUT)
+					.registerStoredProcedureParameter(2, Integer.class, ParameterMode.OUT)
+					.registerStoredProcedureParameter(3, String.class, ParameterMode.OUT)
 					.registerStoredProcedureParameter(4, Void.class, ParameterMode.REF_CURSOR)
 
 					/*
@@ -190,10 +196,12 @@ public class HibernateTestingDao implements CommandLineRunner {
 			query.execute();
 			log.info("Procedure Ejecutado");
 
-			List<BeanSalidaProcedure> listaSalida = query.getResultList();
-
+	
 			String P_CODIGOERROR = (String) query.getOutputParameterValue(2);
 			String P_DESCERROR = (String) query.getOutputParameterValue(3);
+			
+			@SuppressWarnings("unchecked")
+			List<Object[]> cursorOut = query.getResultList();
 
 			log.info("Parametros obtenidos correctamente");
 
