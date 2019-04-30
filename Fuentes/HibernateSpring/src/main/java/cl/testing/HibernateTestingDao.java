@@ -85,7 +85,7 @@ public class HibernateTestingDao implements CommandLineRunner {
 					/*
 					 * Salidas
 					 */
-					.registerStoredProcedureParameter(3, void.class, ParameterMode.REF_CURSOR)
+					.registerStoredProcedureParameter(3, Class.class, ParameterMode.REF_CURSOR)
 
 					/*
 					 * Parametros de entrada
@@ -97,7 +97,7 @@ public class HibernateTestingDao implements CommandLineRunner {
 			query.execute();
 			log.info("Procedure Ejecutado");
 
-			List<Object[]> results = query.getResultList();
+			List<Object[]> postComments = query.getResultList();
 
 			log.info("Parametros obtenidos correctamente");
 
