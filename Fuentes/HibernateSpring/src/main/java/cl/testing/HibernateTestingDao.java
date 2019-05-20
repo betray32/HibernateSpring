@@ -33,6 +33,9 @@ public class HibernateTestingDao implements CommandLineRunner {
 
 		log.info("Consultando por Query Directa");
 		queryDirecta.consultaQueryDirecta();
+		
+		log.info("Consultando por Query con Parametros");
+		queryDirecta.consultaQueryParam(1);
 
 		log.info("Proceso finalizado");
 

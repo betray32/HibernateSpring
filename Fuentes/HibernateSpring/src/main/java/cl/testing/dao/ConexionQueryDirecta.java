@@ -42,7 +42,7 @@ public class ConexionQueryDirecta {
 	public void consultaQueryDirecta() {
 
 		String query = properties.getQUERY_DIRECTA();
-		log.info("Comenzando la ejecucion mediante Query directa");
+		log.info("Comenzando la ejecucion mediante Query Directa");
 		log.info("Query : " + query);
 
 		List<Person> listaSalida = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(Person.class));
@@ -57,13 +57,13 @@ public class ConexionQueryDirecta {
 	/**
 	 * Query con parametro
 	 */
-	public void consultaQueryParam() {
+	public void consultaQueryParam(int idPersona) {
 
 		String query = properties.getQUERY_PARAM();
-		log.info("Comenzando la ejecucion mediante Query directa");
+		log.info("Comenzando la ejecucion mediante Query Con Parametros");
 		log.info("Query : " + query);
 
-		List<Person> listaSalida = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(Person.class));
+		List<Person> listaSalida = jdbcTemplate.query(query, new Object[] { idPersona }, new BeanPropertyRowMapper<>(Person.class));
 		log.info("Lista consultada exitosamente");
 		if (listaSalida != null) {
 			for (Person p : listaSalida) {
