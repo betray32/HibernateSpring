@@ -1,4 +1,4 @@
 # Properties de este proceso
-ProcedureSalidasIndependientes: XMBC_BPERSONA.PKG_CNS_INTERFAZFISA_GL_CCP.SPCNS_GL_DATOS_ARCHIVO
-ProcedureSalidaCursor: XMBC_BPERSONA.PKGBC_ORGANIZADOR_GASTOS.SP_CURSOR_GRUPOS_MES
-ProcedureSalidaMixta: XMBC_BPERSONA.PKG_BP_PARAMETROS.usp_bpersona_obtValorParametro
+QUERY_DIRECTA : SELECT * FROM Person
+QUERY_PARAM : SELECT * FROM Person WHERE id = ?
+

@@ -11,37 +11,23 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties
 public class CustomYMLFile {
 
-	private String ProcedureSalidasIndependientes;
-	private String ProcedureSalidaCursor;
-	private String ProcedureSalidaMixta;
+	private String QUERY_DIRECTA;
+	private String QUERY_PARAM;
 
-	/**
-	 * Accesos
-	 * 
-	 * @return
-	 */
-	public String getProcedureSalidasIndependientes() {
-		return ProcedureSalidasIndependientes;
+	public String getQUERY_DIRECTA() {
+		return QUERY_DIRECTA;
 	}
 
-	public void setProcedureSalidasIndependientes(String procedureSalidasIndependientes) {
-		ProcedureSalidasIndependientes = procedureSalidasIndependientes;
+	public void setQUERY_DIRECTA(String qUERY_DIRECTA) {
+		QUERY_DIRECTA = qUERY_DIRECTA;
 	}
 
-	public String getProcedureSalidaCursor() {
-		return ProcedureSalidaCursor;
+	public String getQUERY_PARAM() {
+		return QUERY_PARAM;
 	}
 
-	public void setProcedureSalidaCursor(String procedureSalidaCursor) {
-		ProcedureSalidaCursor = procedureSalidaCursor;
-	}
-
-	public String getProcedureSalidaMixta() {
-		return ProcedureSalidaMixta;
-	}
-
-	public void setProcedureSalidaMixta(String procedureSalidaMixta) {
-		ProcedureSalidaMixta = procedureSalidaMixta;
+	public void setQUERY_PARAM(String qUERY_PARAM) {
+		QUERY_PARAM = qUERY_PARAM;
 	}
 
 }
