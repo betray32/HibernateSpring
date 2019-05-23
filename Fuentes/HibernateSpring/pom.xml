@@ -7,9 +7,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>HibernateSpring</name>
 	<description>Testing para Spring Boot</description>
-	
+
+	<!-- Datos del Proceso -->
 	<inceptionYear>2019</inceptionYear>
-	
 	<developers>
 		<developer>
 			<id>CC</id>
@@ -25,7 +25,6 @@
 		<version>2.2.0.BUILD-SNAPSHOT</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-
 
 	<properties>
 		<java.version>1.8</java.version>
