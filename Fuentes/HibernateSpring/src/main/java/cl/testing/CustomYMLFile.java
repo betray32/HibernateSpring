@@ -14,6 +14,17 @@ public class CustomYMLFile {
 	private String QUERY_DIRECTA;
 	private String QUERY_PARAM;
 
+	private String PROCEDURE_OBTENER_PERSONAS;
+
+	/** GET Y SET **/
+	public String getPROCEDURE_OBTENER_PERSONAS() {
+		return PROCEDURE_OBTENER_PERSONAS;
+	}
+
+	public void setPROCEDURE_OBTENER_PERSONAS(String pROCEDURE_OBTENER_PERSONAS) {
+		PROCEDURE_OBTENER_PERSONAS = pROCEDURE_OBTENER_PERSONAS;
+	}
+
 	public String getQUERY_DIRECTA() {
 		return QUERY_DIRECTA;
 	}

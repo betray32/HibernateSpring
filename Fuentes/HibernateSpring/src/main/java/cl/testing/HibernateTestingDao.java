@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Repository;
 
 import cl.testing.dao.ConexionQueryDirecta;
+import cl.testing.dao.ConexionStoredProcedure;
 
 /**
  * HibernateTestingDao
@@ -24,6 +25,9 @@ public class HibernateTestingDao implements CommandLineRunner {
 
 	@Autowired
 	private ConexionQueryDirecta queryDirecta;
+	
+	@Autowired
+	private ConexionStoredProcedure queryProcedure;
 
 	/**
 	 * Ejecucion automatica
@@ -36,6 +40,9 @@ public class HibernateTestingDao implements CommandLineRunner {
 		
 		log.info("Consultando por Query con Parametros");
 		queryDirecta.consultaQueryParam(1);
+		
+		log.info("Consultando al Procedure...");
+		queryProcedure.obtenerDatosPersonas();
 
 		log.info("Proceso finalizado");
 
