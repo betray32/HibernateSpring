@@ -1,2 +1,2 @@
 # HibernateSpring
-Pruebas para hibernate con Spring
+Pruebas para JPA - Hibernate , Spring Boot
