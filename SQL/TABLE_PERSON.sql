@@ -10,3 +10,14 @@ CREATE TABLE public.person (
 	CONSTRAINT person_pkey PRIMARY KEY (id)
 );
 
+INSERT INTO public.person
+(id, first_name, last_name, address)
+VALUES(0, 'CAMILO', 'CONTRERAS', 'FRAYCAMILO190');
+
+INSERT INTO public.person
+(id, first_name, last_name, address)
+VALUES(1, 'BERNARDO', 'CACERES', 'FRAYCAMILO190');
+
+INSERT INTO public.person
+(id, first_name, last_name, address)
+VALUES(2, 'JOSE', 'CONTRERAS', 'ANDES4165');

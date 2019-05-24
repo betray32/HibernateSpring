@@ -40,12 +40,12 @@ class ConexionStoreProcedureTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		log.info("-------------------------------");
-		log.info("Inicializando Test para [ConexionQueryDirecta]");
+		log.info("Inicializando Test para [Conexion Stored Procedure]");
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		log.info("Test Finalizado para [ConexionQueryDirecta]");
+		log.info("Test Finalizado para [Conexion Stored Procedure]");
 	}
 
 	/**

@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 
 import cl.testing.CustomYMLFile;
 import cl.testing.HibernateTestingDao;
-import cl.testing.bean.Person;
 import cl.testing.bean.PersonEntity;
 
 /**
@@ -45,7 +44,8 @@ public class ConexionStoredProcedure {
 	private CustomYMLFile prop;
 
 	/**
-	 * Consulta la lista de personas
+	 * Consulta la lista de personas , este procedimiento no tiene parametros de entrada ni de salida y
+	 * devuelve un cursor
 	 */
 	public List<PersonEntity> obtenerDatosPersonas() {
 
