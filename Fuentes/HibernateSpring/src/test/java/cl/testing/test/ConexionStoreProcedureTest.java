@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import cl.testing.bean.Person;
+import cl.testing.bean.PersonEntity;
 import cl.testing.dao.ConexionStoredProcedure;
 
 /**
@@ -56,7 +56,7 @@ class ConexionStoreProcedureTest {
 	void testObtenerDatosPersonas() {
 		
 		log.info("Consultando procedimiento Obtener Personas");
-		List<Person> personas = sp.obtenerDatosPersonas();
+		List<PersonEntity> personas = sp.obtenerDatosPersonas();
 		
 		// Validar que no sea nulo
 		assertNotNull(personas);

@@ -1,16 +1,29 @@
 package cl.testing.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Person , mapeo desde la base
  * 
  * @author ccontrerasc
  *
  */
-public class Person {
+@Entity
+public class PersonEntity {
 
+	@Id
+	@Column
 	private int id;
+	
+	@Column
 	private String first_name;
+	
+	@Column
 	private String last_name;
+	
+	@Column
 	private String address;
 
 	/** GET Y SET **/

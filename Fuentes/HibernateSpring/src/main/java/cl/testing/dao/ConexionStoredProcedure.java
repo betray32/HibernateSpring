@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import cl.testing.CustomYMLFile;
 import cl.testing.HibernateTestingDao;
 import cl.testing.bean.Person;
+import cl.testing.bean.PersonEntity;
 
 /**
  * Permite conectarse hacia procedimientos almacenados
@@ -46,19 +47,19 @@ public class ConexionStoredProcedure {
 	/**
 	 * Consulta la lista de personas
 	 */
-	public List<Person> obtenerDatosPersonas() {
+	public List<PersonEntity> obtenerDatosPersonas() {
 
 		try {
 
 			log.info("Procediendo a obtener el detalle de los clientes");
-			StoredProcedureQuery storedProcedureQuery = entityManager.createStoredProcedureQuery(prop.getPROCEDURE_OBTENER_PERSONAS(), Person.class);
+			StoredProcedureQuery storedProcedureQuery = entityManager.createStoredProcedureQuery(prop.getPROCEDURE_OBTENER_PERSONAS(), PersonEntity.class);
 
 			@SuppressWarnings("unchecked")
-			List<Person> res = storedProcedureQuery.getResultList();
+			List<PersonEntity> res = storedProcedureQuery.getResultList();
 
 			log.info("Lista consultada exitosamente");
 			log.info("Recorriendo lista de salida...");
-			for (Person p : res) {
+			for (PersonEntity p : res) {
 				log.info("Persona : " + p);
 			}
 
