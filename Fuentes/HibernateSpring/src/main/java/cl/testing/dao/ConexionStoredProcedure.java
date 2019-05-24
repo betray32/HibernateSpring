@@ -46,7 +46,8 @@ public class ConexionStoredProcedure {
 	/**
 	 * Consulta la lista de personas
 	 */
-	public void obtenerDatosPersonas() {
+	public List<Person> obtenerDatosPersonas() {
+
 		try {
 
 			log.info("Procediendo a obtener el detalle de los clientes");
@@ -61,10 +62,13 @@ public class ConexionStoredProcedure {
 				log.info("Persona : " + p);
 			}
 
+			return res;
+
 		} catch (Exception e) {
 			log.error("Error al consultar procedure [" + prop.getPROCEDURE_OBTENER_PERSONAS() + "] , Detalle > " + e.getMessage());
 		}
 
+		return null;
 	}
 
 }

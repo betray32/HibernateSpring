@@ -1,6 +1,9 @@
 package cl.testing.test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -11,28 +14,28 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import cl.testing.dao.ConexionQueryDirecta;
+import cl.testing.bean.Person;
+import cl.testing.dao.ConexionStoredProcedure;
 
 /**
- * Probar la conexion directa
- * 
+ * Permite probar procedimientos almacenados
  * @author ccontrerasc
  *
  */
-@DisplayName("Pruebas para Conexiones Directas")
+@DisplayName("Pruebas para Store Procedures")
 @SpringBootTest
-class ConexionDirectaTest {
-
+class ConexionStoreProcedureTest {
+	
 	/**
 	 * LOG
 	 */
 	private static final Log log = LogFactory.getLog(ConexionDirectaTest.class);
-
+	
 	/**
-	 * Conexion con las Querys
+	 * Conexion al procedimiento
 	 */
 	@Autowired
-	private ConexionQueryDirecta queryDirecta;
+	private ConexionStoredProcedure sp;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -46,26 +49,20 @@ class ConexionDirectaTest {
 	}
 
 	/**
-	 * testConsultaQueryDirecta
+	 * Probar la funcionalidad
 	 */
-	@DisplayName("Probando la Conexion Directa")
+	@DisplayName("Prueba Query Solo Cursor")
 	@Test
-	void testConsultaQueryDirecta() {
-		log.info("Consultando Query Directa");
-		assertTrue(queryDirecta.consultaQueryDirecta());
-	}
-
-	/**
-	 * testConsultaQueryParam
-	 */
-	@DisplayName("Probando Query con Parametro")
-	@Test
-	void testConsultaQueryParam() {
-
-		int idPersona = 1;
-
-		log.info("Consultando por el id : " + idPersona);
-		assertTrue(queryDirecta.consultaQueryParam(idPersona));
+	void testObtenerDatosPersonas() {
+		
+		log.info("Consultando procedimiento Obtener Personas");
+		List<Person> personas = sp.obtenerDatosPersonas();
+		
+		// Validar que no sea nulo
+		assertNotNull(personas);
+		
+		// Validar que contenga data
+		assertFalse(personas.isEmpty());
 	}
 
 }
