@@ -15,6 +15,7 @@ public class CustomYMLFile {
 	private String QUERY_PARAM;
 
 	private String PROCEDURE_OBTENER_PERSONAS;
+	private String PROCEDURE_OBTENER_PERSONA_ID;
 
 	/** GET Y SET **/
 	public String getPROCEDURE_OBTENER_PERSONAS() {
@@ -39,6 +40,14 @@ public class CustomYMLFile {
 
 	public void setQUERY_PARAM(String qUERY_PARAM) {
 		QUERY_PARAM = qUERY_PARAM;
+	}
+
+	public String getPROCEDURE_OBTENER_PERSONA_ID() {
+		return PROCEDURE_OBTENER_PERSONA_ID;
+	}
+
+	public void setPROCEDURE_OBTENER_PERSONA_ID(String pROCEDURE_OBTENER_PERSONA_ID) {
+		PROCEDURE_OBTENER_PERSONA_ID = pROCEDURE_OBTENER_PERSONA_ID;
 	}
 
 }

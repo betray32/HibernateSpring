@@ -3,6 +3,7 @@ package cl.testing.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
 
@@ -22,7 +23,7 @@ import cl.testing.bean.PersonEntity;
  *
  */
 @Repository
-public class ConexionStoredProcedure {
+public class DaoStoreProcedureQuery {
 
 	/**
 	 * LOG
@@ -67,6 +68,36 @@ public class ConexionStoredProcedure {
 
 		} catch (Exception e) {
 			log.error("Error al consultar procedure [" + prop.getPROCEDURE_OBTENER_PERSONAS() + "] , Detalle > " + e.getMessage());
+		}
+
+		return null;
+	}
+
+	/**
+	 * Consulta la lista de personas , este procedimiento no tiene parametros de entrada ni de salida y
+	 * devuelve un cursor
+	 */
+	public List<PersonEntity> obtenerDatosPersonasPorId(int idCliente) {
+
+		try {
+
+			log.info("Procediendo a obtener el detalle de los clientes filtrando por ID");
+			StoredProcedureQuery storedProcedureQuery = entityManager.createStoredProcedureQuery(prop.getPROCEDURE_OBTENER_PERSONA_ID(), PersonEntity.class)
+					.registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN).setParameter(1, idCliente);
+
+			@SuppressWarnings("unchecked")
+			List<PersonEntity> res = storedProcedureQuery.getResultList();
+
+			log.info("Lista consultada exitosamente");
+			log.info("Recorriendo lista de salida...");
+			for (PersonEntity p : res) {
+				log.info("Persona : " + p);
+			}
+
+			return res;
+
+		} catch (Exception e) {
+			log.error("Error al consultar procedure [" + prop.getPROCEDURE_OBTENER_PERSONA_ID() + "] , Detalle > " + e.getMessage());
 		}
 
 		return null;

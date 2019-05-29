@@ -15,27 +15,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import cl.testing.bean.PersonEntity;
-import cl.testing.dao.ConexionStoredProcedure;
+import cl.testing.dao.DaoStoreProcedureQuery;
 
 /**
  * Permite probar procedimientos almacenados
+ * 
  * @author ccontrerasc
  *
  */
 @DisplayName("Pruebas para Store Procedures")
 @SpringBootTest
 class ConexionStoreProcedureTest {
-	
+
 	/**
 	 * LOG
 	 */
-	private static final Log log = LogFactory.getLog(ConexionDirectaTest.class);
-	
+	private static final Log log = LogFactory.getLog(ConexionStoreProcedureTest.class);
+
 	/**
 	 * Conexion al procedimiento
 	 */
 	@Autowired
-	private ConexionStoredProcedure sp;
+	private DaoStoreProcedureQuery sp;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -54,13 +55,34 @@ class ConexionStoreProcedureTest {
 	@DisplayName("Prueba Query Solo Cursor")
 	@Test
 	void testObtenerDatosPersonas() {
-		
+
 		log.info("Consultando procedimiento Obtener Personas");
 		List<PersonEntity> personas = sp.obtenerDatosPersonas();
-		
+
 		// Validar que no sea nulo
 		assertNotNull(personas);
-		
+
+		// Validar que contenga data
+		assertFalse(personas.isEmpty());
+	}
+
+	/**
+	 * Probar la funcionalidad
+	 */
+	@DisplayName("Prueba Query Solo Cursor con ID Parametro")
+	@Test
+	void testObtenerDatosPersonasID() {
+
+		log.info("Consultando procedimiento Obtener Personas POR ID");
+
+		int idCliente = 1;
+		log.info("Consultando Cliente : " + idCliente);
+
+		List<PersonEntity> personas = sp.obtenerDatosPersonasPorId(idCliente);
+
+		// Validar que no sea nulo
+		assertNotNull(personas);
+
 		// Validar que contenga data
 		assertFalse(personas.isEmpty());
 	}
