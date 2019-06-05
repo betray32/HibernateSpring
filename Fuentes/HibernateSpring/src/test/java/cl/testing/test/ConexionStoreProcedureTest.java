@@ -2,6 +2,7 @@ package cl.testing.test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ class ConexionStoreProcedureTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		log.info("-------------------------------");
+		log.info("---------------------------------------------------");
 		log.info("Inicializando Test para [Conexion Stored Procedure]");
 	}
 
@@ -52,7 +53,7 @@ class ConexionStoreProcedureTest {
 	/**
 	 * Probar la funcionalidad
 	 */
-	@DisplayName("Prueba Query Solo Cursor")
+	@DisplayName("SP_CURSOR SALIDA")
 	@Test
 	void testObtenerDatosPersonas() {
 
@@ -69,7 +70,7 @@ class ConexionStoreProcedureTest {
 	/**
 	 * Probar la funcionalidad
 	 */
-	@DisplayName("Prueba Query Solo Cursor con ID Parametro")
+	@DisplayName("SP_CURSOR con Id entrada")
 	@Test
 	void testObtenerDatosPersonasID() {
 
@@ -85,6 +86,25 @@ class ConexionStoreProcedureTest {
 
 		// Validar que contenga data
 		assertFalse(personas.isEmpty());
+	}
+
+	/**
+	 * Probar la funcionalidad
+	 */
+	@DisplayName("SP_ESPECIFICO Filtrado por ID")
+	@Test
+	void testObtenerDatosPersonasEspecifico() {
+
+		log.info("Consultando procedimiento Obtener datos especificos x ID");
+
+		int idCliente = 1;
+		log.info("Consultando Cliente : " + idCliente);
+
+		int salida = sp.obtenerDatosPersonaEspecifico(idCliente);
+
+		// 1 = OK
+		assertEquals(1, salida);
+
 	}
 
 }

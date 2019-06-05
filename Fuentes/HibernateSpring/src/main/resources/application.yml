@@ -4,4 +4,4 @@ QUERY_PARAM : SELECT * FROM Person WHERE id = ?
 
 PROCEDURE_OBTENER_PERSONAS : list_person
 PROCEDURE_OBTENER_PERSONA_ID : list_person_id
-
+PROCEDURE_OBTENER_DATOS_UNICOS : obtenerDatosClienteInicial
