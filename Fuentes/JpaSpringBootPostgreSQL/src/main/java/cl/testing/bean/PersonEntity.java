@@ -11,7 +11,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Person {
+public class PersonEntity {
 
 	@Id
 	@Column

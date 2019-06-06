@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cl.testing</groupId>
-	<artifactId>HibernateSpring</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>JpaSpringBootPostgreSQL</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>HibernateSpring</name>
 	<description>Testing para Spring Boot</description>
 
@@ -26,6 +26,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
+	<!-- Properties -->
 	<properties>
 		<java.version>1.8</java.version>
 		<start-class>cl.testing.HibernateSpringApplication</start-class>

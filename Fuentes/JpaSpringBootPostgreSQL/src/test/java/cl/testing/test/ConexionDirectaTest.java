@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +19,7 @@ import cl.testing.dao.ConexionQueryDirecta;
  * @author ccontrerasc
  *
  */
+@DisplayName("Pruebas para Conexiones Directas")
 @SpringBootTest
 class ConexionDirectaTest {
 
@@ -34,6 +36,7 @@ class ConexionDirectaTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		log.info("-------------------------------");
 		log.info("Inicializando Test para [ConexionQueryDirecta]");
 	}
 
@@ -45,6 +48,7 @@ class ConexionDirectaTest {
 	/**
 	 * testConsultaQueryDirecta
 	 */
+	@DisplayName("Probando la Conexion Directa")
 	@Test
 	void testConsultaQueryDirecta() {
 		log.info("Consultando Query Directa");
@@ -54,6 +58,7 @@ class ConexionDirectaTest {
 	/**
 	 * testConsultaQueryParam
 	 */
+	@DisplayName("Probando Query con Parametro")
 	@Test
 	void testConsultaQueryParam() {
 
