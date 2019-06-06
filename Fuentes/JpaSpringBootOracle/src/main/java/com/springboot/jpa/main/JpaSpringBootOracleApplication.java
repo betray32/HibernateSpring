@@ -1,23 +1,26 @@
-package cl.testing;
-
-import java.util.Date;
+package com.springboot.jpa.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
+/**
+ * Launcher
+ * 
+ * @author ccontrerasc
+ *
+ */
 @SpringBootApplication
 @EnableConfigurationProperties(CustomYMLFile.class)
-public class HibernateSpringApplication {
+public class JpaSpringBootOracleApplication {
 
 	/**
-	 * Launcher
+	 * Main Method
 	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("Inicializando SpringBoot JPA PostgreSQL , Date : " + new Date());
-		SpringApplication.run(HibernateSpringApplication.class, args);
+		SpringApplication.run(JpaSpringBootOracleApplication.class, args);
 	}
 
 }
