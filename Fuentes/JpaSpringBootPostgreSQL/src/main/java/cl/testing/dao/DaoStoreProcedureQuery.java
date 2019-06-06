@@ -127,11 +127,11 @@ public class DaoStoreProcedureQuery {
 
 		try {
 
-			log.info("Procediendo a obtener el detalle de los clientes filtrando por ID");
+			log.info("Procediendo a obtener salidas especificas para la persona");
 			StoredProcedureQuery storedProcedureQuery = entityManager
 					
 					// Definicion
-					.createStoredProcedureQuery(prop.getPROCEDURE_OBTENER_DATOS_UNICOS(), PersonEntity.class)
+					.createStoredProcedureQuery(prop.getPROCEDURE_OBTENER_DATOS_UNICOS())
 
 					// Entradas
 					.registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN)

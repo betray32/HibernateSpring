@@ -3,6 +3,7 @@ package com.springboot.jpa.main;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Launcher
@@ -11,6 +12,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  *
  */
 @SpringBootApplication
+@ComponentScan({ "com.springboot.jpa.main", "com.springboot.jpa.dao" })
 @EnableConfigurationProperties(CustomYMLFile.class)
 public class JpaSpringBootOracleApplication {
 
