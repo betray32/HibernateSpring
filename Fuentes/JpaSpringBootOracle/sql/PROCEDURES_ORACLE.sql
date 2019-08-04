@@ -1,7 +1,7 @@
 
 -- Procedimientos
 
-
+-----------------------------------------------------------------------
 -- Obtener todas las personas
 CREATE OR REPLACE PROCEDURE OBTENER_PERSONAS
 (
@@ -10,12 +10,39 @@ CREATE OR REPLACE PROCEDURE OBTENER_PERSONAS
 IS
 BEGIN
 
-  OPEN c_personas FOR
-  SELECT * FROM PERSONA;
+    OPEN c_personas FOR
+    SELECT * FROM PERSONA;
  
 END;
 /
 
+-----------------------------------------------------------------------
+
+-- Obtener un procedure de salida con codigos de salida y mensaje
+CREATE OR REPLACE PROCEDURE OBTENER_PERSONAS_COD
+(
+    c_personas OUT SYS_REFCURSOR,
+    codigo out numeric,
+    mensaje out varchar2
+)
+IS
+BEGIN
+
+    OPEN c_personas FOR
+    SELECT * FROM PERSONA;
+
+    codigo := 0;
+    mensaje := 'OK';
+
+    EXCEPTION
+    WHEN OTHERS THEN
+        codigo := 500;
+        mensaje := 'ERROR';
+
+END;
+/
+
+-----------------------------------------------------------------------
 -- Obtener data especifica a partir de un ID
 
 CREATE OR REPLACE PROCEDURE OBTENER_CLIENTE_XID
@@ -32,3 +59,4 @@ BEGIN
  
 END;
 /
+-----------------------------------------------------------------------
