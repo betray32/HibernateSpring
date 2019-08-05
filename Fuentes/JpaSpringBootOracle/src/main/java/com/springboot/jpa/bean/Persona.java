@@ -17,9 +17,9 @@ public class Persona {
 	 * Default constructor
 	 */
 	public Persona() {
-		
+
 	}
-	
+
 	/**
 	 * Constructor
 	 * 

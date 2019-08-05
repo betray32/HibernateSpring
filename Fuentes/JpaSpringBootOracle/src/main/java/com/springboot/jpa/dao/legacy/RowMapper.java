@@ -1,4 +1,4 @@
-package cl.bancoconsorcio.apis.dao.mappers.schema;
+package com.springboot.jpa.dao.legacy;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

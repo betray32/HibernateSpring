@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
  *
  */
 @SpringBootApplication
-@ComponentScan({ "com.springboot.jpa.dao", "com.springboot.jpa.bean" , "com.springboot.jpa.main" , "com.springboot.jpa.dao.legacy" })
+@ComponentScan({ "com.springboot.jpa.dao", "com.springboot.jpa.bean", "com.springboot.jpa.main", "com.springboot.jpa.dao.legacy" })
 @EnableConfigurationProperties(CustomYMLFile.class)
 public class JpaSpringBootOracleApplication {
 

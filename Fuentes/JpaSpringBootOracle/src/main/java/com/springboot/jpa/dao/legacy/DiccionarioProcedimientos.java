@@ -34,10 +34,9 @@ public class DiccionarioProcedimientos {
 
 		return res.toString();
 	}
-	
+
 	/**
-	 * Permite armar un procedure con el numero de parametros pero empezando la
-	 * cadena como Exec
+	 * Permite armar un procedure con el numero de parametros pero empezando la cadena como Exec
 	 * 
 	 * @param nombreProcedure
 	 * @param parametros
@@ -58,8 +57,8 @@ public class DiccionarioProcedimientos {
 				res.append("?,");
 			}
 		}
-		
+
 		return res.toString();
 	}
-	
+
 }

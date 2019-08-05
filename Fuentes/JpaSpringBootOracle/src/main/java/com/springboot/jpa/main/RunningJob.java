@@ -21,7 +21,7 @@ public class RunningJob implements CommandLineRunner {
 	 * LOG
 	 */
 	private static final Log log = LogFactory.getLog(RunningJob.class);
-	
+
 	@Autowired
 	private DaoStoreProcedureJpa dao;
 
