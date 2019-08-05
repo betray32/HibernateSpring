@@ -1,5 +1,6 @@
 package com.springboot.jpa.main.test;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.apache.commons.logging.Log;
@@ -8,10 +9,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.springboot.jpa.dao.ConexionQueryDirecta;
-import com.springboot.jpa.dao.DaoStoreProcedureQuery;
+import com.springboot.jpa.dao.DaoStoreProcedureProcedure;
 
 /**
  * Ejecucion de pruebas
@@ -34,7 +36,7 @@ class SpringBootOracleTest {
 	private ConexionQueryDirecta query;
 	
 	@Autowired
-	private DaoStoreProcedureQuery sp;
+	private DaoStoreProcedureProcedure sp;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -56,10 +58,13 @@ class SpringBootOracleTest {
 		assertTrue(query.consultaQueryDirecta());
 	}
 	
+	/**
+	 * Consultar el procedure
+	 */
 	@Test
 	void testStoreProcedure() {
 		log.info("Test [testStoreProcedure]");
-		sp.obtenerDatosPersonas();
+		assertNotNull(sp.obtenerDatosPersonas());
 	}
 
 }

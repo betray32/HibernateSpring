@@ -1,7 +1,6 @@
 package com.springboot.jpa.bean;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
@@ -10,7 +9,7 @@ import javax.persistence.Id;
  * @author ccontrerasc
  *
  */
-@Entity
+@javax.persistence.Entity
 public class Persona {
 
 	@Id
