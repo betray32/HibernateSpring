@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Repository;
 
-import com.springboot.jpa.dao.DaoStoreProcedureProcedure;
+import com.springboot.jpa.dao.DaoStoreProcedureJpa;
 
 /**
  * Permite ejecutar una accion automatica al iniciar el proceso
@@ -23,7 +23,7 @@ public class RunningJob implements CommandLineRunner {
 	private static final Log log = LogFactory.getLog(RunningJob.class);
 	
 	@Autowired
-	private DaoStoreProcedureProcedure dao;
+	private DaoStoreProcedureJpa dao;
 
 	/**
 	 * Ejecucion automatica

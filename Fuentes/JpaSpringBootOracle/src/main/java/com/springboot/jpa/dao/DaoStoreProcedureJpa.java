@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.springboot.jpa.bean.Persona;
-import com.springboot.jpa.bean.PersonaEntity;
 import com.springboot.jpa.main.CustomYMLFile;
 
 /**
@@ -23,12 +22,12 @@ import com.springboot.jpa.main.CustomYMLFile;
  *
  */
 @Repository
-public class DaoStoreProcedureProcedure {
+public class DaoStoreProcedureJpa {
 
 	/**
 	 * LOG
 	 */
-	private static final Log log = LogFactory.getLog(DaoStoreProcedureProcedure.class);
+	private static final Log log = LogFactory.getLog(DaoStoreProcedureJpa.class);
 
 	/**
 	 * Maneja las conexiones a bases de datos
@@ -57,20 +56,15 @@ public class DaoStoreProcedureProcedure {
 
 					// Definicion
 					.createStoredProcedureQuery(prop.getPROCEDURE_DEVUELVE_CURSOR())
-					.registerStoredProcedureParameter(
-						    1,
-						    Class.class,
-						    ParameterMode.REF_CURSOR
-						);
+					.registerStoredProcedureParameter(1, Class.class, ParameterMode.REF_CURSOR);
 
 			@SuppressWarnings("unchecked")
-			List<PersonaEntity> res = storedProcedureQuery.getResultList();
+			List<Persona> result = storedProcedureQuery.getResultList();
 
 			log.info("Lista consultada exitosamente");
-			log.info("Recorriendo lista de salida...");
-			
-			
-	
+
+			return result;
+
 		} catch (Exception e) {
 			log.error("Error al consultar procedure [" + prop.getPROCEDURE_DEVUELVE_CURSOR() + "] , Detalle > " + e.getMessage());
 		}

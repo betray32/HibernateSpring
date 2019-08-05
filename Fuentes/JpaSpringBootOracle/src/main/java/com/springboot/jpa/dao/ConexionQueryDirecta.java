@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.springboot.jpa.bean.PersonaEntity;
+import com.springboot.jpa.bean.Persona;
 import com.springboot.jpa.main.CustomYMLFile;
 
 /**
@@ -45,10 +45,10 @@ public class ConexionQueryDirecta {
 		log.info("Comenzando la ejecucion mediante Query Directa");
 		log.info("Query : " + query);
 
-		List<PersonaEntity> listaSalida = null;
+		List<Persona> listaSalida = null;
 
 		try {
-			listaSalida = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(PersonaEntity.class));
+			listaSalida = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(Persona.class));
 		} catch (Exception e) {
 			log.error("Error al consultar , Detalle > " + e.getMessage());
 		}
@@ -56,7 +56,7 @@ public class ConexionQueryDirecta {
 		if (listaSalida != null) {
 
 			log.info("Lista consultada exitosamente");
-			for (PersonaEntity p : listaSalida) {
+			for (Persona p : listaSalida) {
 				log.info("PERSON : " + p);
 			}
 

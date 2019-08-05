@@ -1,29 +1,40 @@
 package com.springboot.jpa.bean;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
 /**
  * Persona , mapeo desde la base
  * 
  * @author ccontrerasc
  *
  */
-@javax.persistence.Entity
 public class Persona {
 
-	@Id
-	@Column
 	private int IDPERSONA;
-
-	@Column
 	private String NOMBRE;
-
-	@Column
 	private String APELLIDO;
-
-	@Column
 	private String DIRECCION;
+
+	/**
+	 * Default constructor
+	 */
+	public Persona() {
+		
+	}
+	
+	/**
+	 * Constructor
+	 * 
+	 * @param iDPERSONA
+	 * @param nOMBRE
+	 * @param aPELLIDO
+	 * @param dIRECCION
+	 */
+	public Persona(int iDPERSONA, String nOMBRE, String aPELLIDO, String dIRECCION) {
+		super();
+		IDPERSONA = iDPERSONA;
+		NOMBRE = nOMBRE;
+		APELLIDO = aPELLIDO;
+		DIRECCION = dIRECCION;
+	}
 
 	/** GET Y SET **/
 	public int getIDPERSONA() {

@@ -9,11 +9,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.springboot.jpa.dao.ConexionQueryDirecta;
-import com.springboot.jpa.dao.DaoStoreProcedureProcedure;
+import com.springboot.jpa.dao.DaoStoreProcedureJpa;
 
 /**
  * Ejecucion de pruebas
@@ -36,7 +35,7 @@ class SpringBootOracleTest {
 	private ConexionQueryDirecta query;
 	
 	@Autowired
-	private DaoStoreProcedureProcedure sp;
+	private DaoStoreProcedureJpa sp;
 
 	@BeforeEach
 	void setUp() throws Exception {
