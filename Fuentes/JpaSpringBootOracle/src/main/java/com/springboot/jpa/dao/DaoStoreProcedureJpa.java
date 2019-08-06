@@ -16,7 +16,7 @@ import com.springboot.jpa.bean.Persona;
 import com.springboot.jpa.main.CustomYMLFile;
 
 /**
- * Conexiones con procedimientos almacenados PostGres
+ * Conexiones con procedimientos almacenados Oracle
  * 
  * @author camilongo
  *

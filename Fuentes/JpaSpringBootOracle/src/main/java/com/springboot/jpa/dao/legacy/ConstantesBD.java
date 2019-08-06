@@ -3,11 +3,22 @@
  */
 package com.springboot.jpa.dao.legacy;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
 /**
  * @author ccontrerasc
  *
  */
+@Configuration
 public class ConstantesBD {
+	
+	/**
+	 * Conexion hacia el archivo properties
+	 */
+	@Autowired
+	private org.springframework.core.env.Environment env;
 
 	/**
 	 * Oracle, Codigos para tipos de datos estrictos
@@ -30,5 +41,20 @@ public class ConstantesBD {
 	public static final String TIPO_SHORT = "SHORT";
 	public static final String TIPO_VARCHAR = "VARCHAR";
 	public static final String TIPO_LONG = "LONG";
+	
+	/**
+	 * Obtener data de conexion
+	 * @return
+	 */
+	@Bean
+	public DataConexion obtenerDataConexionLegacy() {
+		DataConexion salida = new DataConexion();
+		
+		salida.setUrl(env.getProperty("spring.datasource.url"));
+		salida.setUser(env.getProperty("spring.datasource.username"));
+		salida.setPass(env.getProperty("spring.datasource.password"));
+		
+		return salida;
+	}
 
 }

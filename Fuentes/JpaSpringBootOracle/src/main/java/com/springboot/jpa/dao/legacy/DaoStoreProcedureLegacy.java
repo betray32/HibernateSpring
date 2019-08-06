@@ -14,6 +14,7 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.springboot.jpa.main.CustomYMLFile;
@@ -47,8 +48,8 @@ public class DaoStoreProcedureLegacy {
 	private CustomYMLFile prop;
 
 	@Autowired
-	private org.springframework.core.env.Environment env;
-
+	@Qualifier("obtenerDataConexionLegacy")
+	private DataConexion conexion;
 	/*****************
 	 * Mensajes
 	 */
@@ -73,20 +74,19 @@ public class DaoStoreProcedureLegacy {
 		try {
 
 			// Generacion de Objetos
-			List<T> models = new ArrayList<>();
+			List<T> models = null;
 			Connection dbConexion = null;
 			CallableStatement dbComando = null;
 			ResultSet dbResultados = null;
 
 			// Data de conexion
-			String urlConexion = env.getProperty("spring.datasource.url");
 			String procedure = prop.getPROCEDURE_DEVUELVE_CURSOR();
 			/****************************************************/
 
 			try {
 
-				log.info(CONECTANDO_ORACLE + urlConexion);
-				dbConexion = DriverManager.getConnection(urlConexion);
+				log.info(CONECTANDO_ORACLE + conexion.getUrl());
+				dbConexion = DriverManager.getConnection(conexion.getUrl(), conexion.getUser(), conexion.getPass());
 				log.info(CONEXION_OK);
 
 				log.info(CONECTANDO_PROCEDURE + procedure);
@@ -107,12 +107,14 @@ public class DaoStoreProcedureLegacy {
 					log.info("Procedure no retorna resultado: " + procedure);
 				} else {
 
+					models = new ArrayList<>();
 					while (dbResultados.next()) {
 						T model = rowMapper.mapper(dbResultados);
 						models.add(model);
 					}
 
 					log.info(PROCEDIMIENTO_CONSULTADO_EXITOSAMENTE);
+					return models;
 
 				}
 
