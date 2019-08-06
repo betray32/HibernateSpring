@@ -16,7 +16,7 @@ public class HibernateSpringApplication {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("Inicializando SpringBoot APP JPA-Hibernate Testing , Date : " + new Date());
+		System.out.println("Inicializando SpringBoot JPA PostgreSQL , Date : " + new Date());
 		SpringApplication.run(HibernateSpringApplication.class, args);
 	}
 

@@ -57,7 +57,7 @@ class ConexionStoreProcedureTest {
 	@Test
 	void testObtenerDatosPersonas() {
 
-		log.info("Consultando procedimiento Obtener Personas");
+		log.info("Test [testObtenerDatosPersonas]");
 		List<PersonEntity> personas = sp.obtenerDatosPersonas();
 
 		// Validar que no sea nulo
@@ -74,7 +74,7 @@ class ConexionStoreProcedureTest {
 	@Test
 	void testObtenerDatosPersonasID() {
 
-		log.info("Consultando procedimiento Obtener Personas POR ID");
+		log.info("Test [testObtenerDatosPersonasID]");
 
 		int idCliente = 1;
 		log.info("Consultando Cliente : " + idCliente);
@@ -95,7 +95,7 @@ class ConexionStoreProcedureTest {
 	@Test
 	void testObtenerDatosPersonasEspecifico() {
 
-		log.info("Consultando procedimiento Obtener datos especificos x ID");
+		log.info("Test [testObtenerDatosPersonasEspecifico]");
 
 		int idCliente = 1;
 		log.info("Consultando Cliente : " + idCliente);
