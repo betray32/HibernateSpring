@@ -1,4 +1,4 @@
-package cl.testing.dao;
+package com.springboot.jpa.dao;
 
 import java.util.List;
 
@@ -9,9 +9,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import cl.testing.CustomYMLFile;
-import cl.testing.HibernateTestingDao;
-import cl.testing.bean.Person;
+import com.springboot.jpa.bean.Persona;
+import com.springboot.jpa.main.CustomYMLFile;
 
 /**
  * Consultas para bases de datos con querys , esto incluye conexiones directas a la base de datos
@@ -26,7 +25,7 @@ public class ConexionQueryDirecta {
 	/**
 	 * LOG
 	 */
-	private static final Log log = LogFactory.getLog(HibernateTestingDao.class);
+	private static final Log log = LogFactory.getLog(ConexionQueryDirecta.class);
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
@@ -46,10 +45,10 @@ public class ConexionQueryDirecta {
 		log.info("Comenzando la ejecucion mediante Query Directa");
 		log.info("Query : " + query);
 
-		List<Person> listaSalida = null;
+		List<Persona> listaSalida = null;
 
 		try {
-			listaSalida = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(Person.class));
+			listaSalida = jdbcTemplate.query(query, new BeanPropertyRowMapper<>(Persona.class));
 		} catch (Exception e) {
 			log.error("Error al consultar , Detalle > " + e.getMessage());
 		}
@@ -57,7 +56,7 @@ public class ConexionQueryDirecta {
 		if (listaSalida != null) {
 
 			log.info("Lista consultada exitosamente");
-			for (Person p : listaSalida) {
+			for (Persona p : listaSalida) {
 				log.info("PERSON : " + p);
 			}
 
@@ -67,34 +66,6 @@ public class ConexionQueryDirecta {
 		}
 
 		return false;
-	}
-
-	/**
-	 * Query con parametro
-	 */
-	public boolean consultaQueryParam(int idPersona) {
-
-		String query = properties.getQUERY_PARAM();
-		log.info("Comenzando la ejecucion mediante Query Con Parametros");
-		log.info("Query : " + query);
-
-		// Generar objeto con los parametros
-		Object[] params = { idPersona };
-
-		List<Person> listaSalida = jdbcTemplate.query(query, params, new BeanPropertyRowMapper<>(Person.class));
-
-		if (listaSalida != null) {
-
-			log.info("Lista consultada exitosamente");
-			for (Person p : listaSalida) {
-				log.info("PERSON : " + p);
-			}
-
-			return true;
-		}
-
-		return false;
-
 	}
 
 }
