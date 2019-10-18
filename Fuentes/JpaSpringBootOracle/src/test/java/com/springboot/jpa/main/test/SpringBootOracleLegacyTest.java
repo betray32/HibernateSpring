@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.springboot.jpa.bean.Persona;
+import com.springboot.jpa.bean.ListadoMaestroNotificaciones;
 import com.springboot.jpa.dao.legacy.DaoStoreProcedureLegacy;
 import com.springboot.jpa.dao.legacy.GetPersonasMapper;;
 
@@ -54,9 +54,9 @@ class SpringBootOracleLegacyTest {
 	void testStoreProcedureLegacy() {
 		
 		log.info("Test [DaoStoreProcedureLegacy]");
-		List<Persona> salida = sp.obtenerDatosPersonas(new GetPersonasMapper());
-		
+		List<ListadoMaestroNotificaciones> salida = sp.obtenerDatosNoti("1", new GetPersonasMapper());
 		assertNotNull(salida);
+		
 	}
 
 }
