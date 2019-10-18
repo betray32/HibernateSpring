@@ -69,7 +69,7 @@ public class DaoStoreProcedureLegacy {
 	 * Consulta la lista de personas , este procedimiento no tiene parametros de entrada ni de salida y
 	 * devuelve un cursor
 	 */
-	public <T> List<T> obtenerDatosPersonas(RowMapper<T> rowMapper) {
+	public <T> List<T> obtenerDatosNoti(String estadoInicial, RowMapper<T> rowMapper) {
 
 		try {
 
@@ -90,18 +90,19 @@ public class DaoStoreProcedureLegacy {
 				log.info(CONEXION_OK);
 
 				log.info(CONECTANDO_PROCEDURE + procedure);
-				procedure = DiccionarioProcedimientos.armarProcedure(procedure, 1);
+				procedure = DiccionarioProcedimientos.armarProcedure(procedure, 2);
 				dbComando = dbConexion.prepareCall(procedure);
 				log.info(PROCEDURE + procedure);
 
 				log.info(SETEANDO_PARAMETROS);
-				dbComando.registerOutParameter(1, ConstantesBD.ORACLE_CURSOR_CODE);
+				dbComando.setString(1, estadoInicial);
+				dbComando.registerOutParameter(2, ConstantesBD.ORACLE_CURSOR_CODE);
 
 				log.info(EJECUTANDO_PROCEDURE);
 				dbComando.execute();
 				log.info(PROCEDURE_EJECUTADO_OK);
 
-				dbResultados = (ResultSet) dbComando.getObject(1);
+				dbResultados = (ResultSet) dbComando.getObject(2);
 
 				if (dbResultados == null) {
 					log.info("Procedure no retorna resultado: " + procedure);
