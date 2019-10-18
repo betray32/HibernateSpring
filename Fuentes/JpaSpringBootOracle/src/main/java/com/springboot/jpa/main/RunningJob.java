@@ -1,17 +1,13 @@
 package com.springboot.jpa.main;
 
-import java.util.List;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Repository;
 
-import com.springboot.jpa.bean.ListadoMaestroNotificaciones;
 import com.springboot.jpa.dao.DaoStoreProcedureJpa;
 import com.springboot.jpa.dao.legacy.DaoStoreProcedureLegacy;
-import com.springboot.jpa.dao.legacy.GetPersonasMapper;
 
 /**
  * Permite ejecutar una accion automatica al iniciar el proceso
